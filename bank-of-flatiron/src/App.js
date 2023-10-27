@@ -3,7 +3,6 @@ import TransactionTable from "./TransactionTable"; // Import the TransactionTabl
 import TransactionFilter from "./TransactionFilter"; // Import the TransactionFilter component
 
 
-
 function App() {
   // Define state to store the transaction data
   const [transactionRecords, setTransactionRecords] = useState([]);
