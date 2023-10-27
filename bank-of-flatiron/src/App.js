@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import TransactionTable from "./TransactionTable"; // Import the TransactionTable component
 
 function App() {
+  // Define state to store the transaction data
+  const [transactionRecords, setTransactionRecords] = useState([]);
+
+  useEffect(() => {
+    // Send a fetch request to the API and set the transactionRecords state
+    fetch("http://localhost:3000/transactions")
+      .then((response) => response.json())
+      .then((data) => {
+        setTransactionRecords(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data from the API:", error);
+      });
+  }, []); // Empty dependency array means this effect runs once on component mount
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Bank Transaction Manager</h1>
+      <TransactionTable transactionRecords={transactionRecords} />
+  
     </div>
   );
 }
