@@ -18,10 +18,22 @@ function App() {
   }, []); // Empty dependency array means this effect runs once on component mount
 
   return (
-    <div>
-      <h1>Bank Transaction Manager</h1>
-      <TransactionTable transactionRecords={transactionRecords} />
-  
+    <div class="container" >
+      <div class="section-header">
+        <h3 id="sectionHeader" class="title" data-title="Bank Transaction Manager">All Transactions</h3>
+        <p class="text">
+        </p>
+      </div>
+
+      <div class="cards">
+        <div className = "container grid-2">
+          <div className = "column-1">
+            
+          </div>
+          <TransactionTable transactionRecords={transactionRecords} />
+        </div>
+       </div>
+    
     </div>
   );
 }
