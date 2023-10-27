@@ -30,9 +30,14 @@ To get started with this project, you can follow these steps:
    git clone git@github.com:mgkEdits/IP01-Code-Challenge-Bank-of-Flatiron.git
 
    ```
-``
 
-2. Install the required dependencies:
+2. Change to the project's directory:
+
+   ```bash
+   cd bank-of-flatirom
+   ```
+
+3. Install the required dependencies:
 
    ```bash
    npm install
