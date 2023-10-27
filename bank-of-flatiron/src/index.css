@@ -32,8 +32,15 @@ code {
 }
 .column-1 {
   margin-right: 1.5rem;
+  min-width: 730px;
+  min-height: 820px;
+  align-items: center;
+  justify-content: center;
 }
-
+.transaction-filter{
+  display: grid;
+  padding: 10px;
+}
 .column-2 {
   margin-left: 1.5rem;
 }
@@ -194,25 +201,37 @@ color:  var(--main-color);
   margin: 2.15rem 0;
 }
 
-.header-content .image .img-element {
-  max-width: 750px;
-}
-
 .card .text {
   font-size: 0.85rem;
   margin: 0.9 rem 0;
 }
 
-.services .points1 {
-  bottom: -50px;
-  left: -125px;
-  opacity: 0.2;
-  pointer-events: none;
+
+
+
+/*buttons*/
+
+button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+  max-width: 300px;
+  background: var(--main-color);
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  color: var(--light-two);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 10px;
 }
-.services .points2 {
-  bottom: -70px;
-  right: -65px;
-  opacity: 0.2;
-  pointer-events: none;
+
+button:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
 }
+
 
