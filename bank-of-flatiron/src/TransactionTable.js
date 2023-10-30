@@ -1,6 +1,6 @@
 import React from "react";
 
-function TransactionTable({ transactionRecords }) {
+function TransactionTable({ transactionRecords, onDeleteTransaction }) {
   return (
     <table className="styled-table">
       <thead>
@@ -10,6 +10,7 @@ function TransactionTable({ transactionRecords }) {
           <th>Description</th>
           <th>Category</th>
           <th>Amount</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,11 @@ function TransactionTable({ transactionRecords }) {
             <td>{transaction.description}</td>
             <td>{transaction.category}</td>
             <td>{transaction.amount}</td>
+            <td>
+                <button onClick={() => onDeleteTransaction(transaction.id)} >
+                  Delete
+                </button>
+              </td>
           </tr>
         ))}
       </tbody>

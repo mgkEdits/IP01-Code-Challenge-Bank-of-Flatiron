@@ -37,6 +37,25 @@ function App() {
   };
   
 
+  const handleDeleteTransaction = (id) => {
+    // Remove the transaction from the table
+    const updatedTransactions = transactionRecords.filter(
+      (transaction) => transaction.id !== id
+    );
+
+    // Send a DELETE request to the API to remove the transaction
+    fetch(`http://localhost:3000/transactions/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        // Update the local state after the transaction is deleted
+        setTransactionRecords(updatedTransactions);
+      })
+      .catch((error) => {
+        console.error("Error deleting transaction:", error);
+      });
+  };
+
   return (
     <div class="container" >
       <div class="section-header">
@@ -52,7 +71,7 @@ function App() {
           </div>
           <div className="column-2">
           <AddTransaction onAddTransaction={handleAddTransaction} />
-          <TransactionTable transactionRecords= {filteredTransactions} />
+          <TransactionTable transactionRecords= {filteredTransactions} onDeleteTransaction={handleDeleteTransaction} />
           </div>
           
         </div>
