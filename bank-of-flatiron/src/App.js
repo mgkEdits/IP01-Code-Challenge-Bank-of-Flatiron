@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable"; // Import the TransactionTable component
 import TransactionFilter from "./TransactionFilter"; // Import the TransactionFilter component
 import AddTransaction from "./AddTransaction"; // Import the AddTransaction component
-
+import SearchBar from "./SearchBar";
 
 function App() {
   // Define state to store the transaction data
   const [transactionRecords, setTransactionRecords] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("All");
-
+  const [searchFilteredTTransactions, setSearchFilteredTTransactions] = useState([]);
 
   useEffect(() => {
     // Send a fetch request to the API and set the transactionRecords state
@@ -16,6 +16,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setTransactionRecords(data);
+        setSearchFilteredTTransactions(data); // Initialize searchFilteredTTansactions with all transactions
       })
       .catch((error) => {
         console.error("Error fetching data from the API:", error);
@@ -56,6 +57,14 @@ function App() {
       });
   };
 
+  const handleSearch = (searchText) => {
+    // Filter transactions based on the search text
+    const filtered = transactionRecords.filter((transaction) =>
+      transaction.description.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setSearchFilteredTTransactions(filtered);
+  };
+
   return (
     <div className="container" >
       <div className="section-header">
@@ -67,6 +76,7 @@ function App() {
       <div className="cards">
         <div className = "container grid-2">
           <div className = "column-1">
+          <SearchBar onSearch={handleSearch} />
           <TransactionFilter transactionCategory={filteredCategory} onCategorySelect={handleCategorySelect} />
           </div>
           <div className="column-2">

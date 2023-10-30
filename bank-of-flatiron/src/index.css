@@ -277,3 +277,20 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+
+/* SearchBar Component */
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
