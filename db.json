@@ -97,8 +97,13 @@
       "category": "Food",
       "amount": "3000",
       "id": 14
+    },
+    {
+      "date": "2023-10-25",
+      "description": "React Development",
+      "category": "income",
+      "amount": 100,
+      "id": 15
     }
   ]
- }
- 
- 
+}

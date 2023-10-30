@@ -23,8 +23,27 @@ function AddTransaction({ onAddTransaction }) {
       amount: parseFloat(formData.amount), // Ensure the amount is a number
     };
 
-    // Call the onAddTransaction callback to add the new transaction
-    onAddTransaction(newTransaction);
+    // // Call the onAddTransaction callback to add the new transaction
+    // onAddTransaction(newTransaction);
+
+    // Send a POST request to the API to add the new transaction
+    fetch("http://localhost:3000/transactions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTransaction),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Call the onAddTransaction callback to update the table with the new data
+        onAddTransaction(data);
+      })
+      .catch((error) => {
+        console.error("Error adding transaction:", error);
+      });
+
+
 
     // Clear the form fields
     setFormData({
