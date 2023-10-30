@@ -2,8 +2,7 @@ import React from "react";
 
 function TransactionTable({ transactionRecords }) {
   return (
-    <div className="column-2">
-      <table className="styled-table">
+    <table className="styled-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -25,7 +24,6 @@ function TransactionTable({ transactionRecords }) {
         ))}
       </tbody>
       </table>
-    </div>
   );
 }
 

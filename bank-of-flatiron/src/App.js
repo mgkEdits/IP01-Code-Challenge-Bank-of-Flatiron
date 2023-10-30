@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable"; // Import the TransactionTable component
 import TransactionFilter from "./TransactionFilter"; // Import the TransactionFilter component
+import AddTransaction from "./AddTransaction"; // Import the AddTransaction component
 
 
 function App() {
   // Define state to store the transaction data
   const [transactionRecords, setTransactionRecords] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("All");
+
 
   useEffect(() => {
     // Send a fetch request to the API and set the transactionRecords state
@@ -27,8 +29,13 @@ function App() {
   const filteredTransactions =
     filteredCategory === "All" ? transactionRecords : transactionRecords.filter(
           (transaction) => transaction.category === filteredCategory
-        );
+  );
 
+  const handleAddTransaction = (newTransaction) => {
+    // Update the list of transactions by adding the new transaction
+    setTransactionRecords([...transactionRecords, newTransaction]);
+  };
+  
 
   return (
     <div class="container" >
@@ -43,7 +50,11 @@ function App() {
           <div className = "column-1">
           <TransactionFilter transactionCategory={filteredCategory} onCategorySelect={handleCategorySelect} />
           </div>
+          <div className="column-2">
+          <AddTransaction onAddTransaction={handleAddTransaction} />
           <TransactionTable transactionRecords= {filteredTransactions} />
+          </div>
+          
         </div>
        </div>
     
