@@ -12,6 +12,7 @@ function TransactionFilter({ transactionCategory, onCategorySelect }) {
 
   return (
     <div className="transaction-filter">
+    <h1>Filter By Category</h1>
       {categories.map((category) => (
         <button
           key={category}
